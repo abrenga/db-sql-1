@@ -45,4 +45,74 @@ from departments d;
 Quanti sono gli insegnanti che non hanno un numero di telefono? (50)
 select count(*) 
 from teachers t
-where  isnull(phone)  ;  
+where  isnull(phone)  ; 
+
+------------------------------Secondo foglio--------------------------------------------------------
+
+Selezionare tutti gli insegnanti 
+select *
+from teachers t;
+
+
+Selezionare tutti i capi di ogni dipartimento:
+
+select d.head_of_department
+from departments d;
+
+
+Selezionare tutti i corsi di laurea magistrale:
+select *
+from degrees d
+where `name`like "%Magistrale%";
+
+Selezionare tutti gli studenti che hanno come nome Marco:
+select *
+from students s 
+where `name`like "%Marco%";
+
+
+
+ Selezionare tutti i corsi(insegnamenti) che valgono più o uguale a 12 crediti:
+
+select *
+from courses c
+where cfu>=12; 
+
+
+
+Selezionare tutti i corsi(insegnamenti)  che valgono più di 10 crediti oppure meno di 5:
+
+select *
+from courses c
+where cfu>=10 or cfu<5 ;
+
+
+Selezionare tutti i corsi(insegnamenti)  che non hanno un sito web:
+
+select * 
+from courses c 
+where  isnull(website)  ;
+
+
+Selezionare tutti gli insegnanti che hanno un numero di telefono:
+
+select * 
+from teachers t 
+where  phone ;
+ 
+ 
+ 
+BONUS: 
+Selezionare tutti gli studenti il cui nome inizia per "E". 
+
+select * 
+from students s 
+where  name like "E%" ;
+
+
+ Contare tutti gli insegnanti che iniziano con “E” (suggerimento: guardate l’operatore COUNT). 
+
+select count(*) 
+from teachers t 
+where  name like "E%" ;
+
