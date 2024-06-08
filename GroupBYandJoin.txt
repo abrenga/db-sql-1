@@ -51,13 +51,73 @@ where d2.name like '%Dipartimento di Neuroscienze%'and d.name like '%Corso di La
 
 
 
+/*Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)*/
+
+select *  
+from  courses c 
+join course_teacher ct on c.id =ct.course_id 
+join teachers t on ct.teacher_id =t.id 
+where t.name like '%Fulvio%'
+and t.surname like '%Amato%';
+
+
+/*Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)*/
+
+select *  
+from  courses c 
+join course_teacher ct on c.id =ct.course_id 
+where teacher_id =44;
+
+
+
+
+/*Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il
+relativo dipartimento, in ordine alfabetico per cognome e nome*/
+
+select *  
+from  students s 
+join degrees d on d.id =s.degree_id 
+join departments d2 on d2.id =d.department_id 
+order by  s.surname , s.name; 
 
 
 
 
 
+/*Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti*/
+
+select *  
+from  courses c 
+join course_teacher ct on ct.course_id =c.id 
+join teachers t on t.id =ct.teacher_id;
 
 
+
+/*Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)*/
+
+
+select * 
+from teachers t 
+inner join course_teacher ct on ct.teacher_id =t.id 
+inner join courses c on c.id= ct.course_id 
+inner join degrees d on d.id =c.degree_id 
+inner join departments d2 on d2.id =d.department_id 
+where d2.name like '%Dipartimento di Matematica%'
+group by t.name, t.surname;
+
+
+
+
+/*BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
+superare ciascuno dei suoi esami*/
+
+
+
+select s.name,  count(*)  
+from students s 
+join exam_student es on s.id = es.student_id 
+join exams e on e.id =es.exam_id 
+group by  es.exam_id;
 
 
  
