@@ -107,17 +107,18 @@ group by t.name, t.surname;
 
 
 
-
 /*BONUS: Selezionare per ogni studente quanti tentativi d’esame ha sostenuto per
 superare ciascuno dei suoi esami*/
 
 
 
-select s.name,  count(*)  
+select s.id ,s.surname ,c.name , count(e.course_id) 
 from students s 
 join exam_student es on s.id = es.student_id 
-join exams e on e.id =es.exam_id 
-group by  es.exam_id;
+join exams e on e.id =es.exam_id
+join courses c on c.id = e.course_id 
+group by s.id , c.name ;
+
 
 
  
