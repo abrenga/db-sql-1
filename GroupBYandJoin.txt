@@ -18,16 +18,18 @@ group by office_address;
 
 
 /*Calcolare la media dei voti di ogni appello d'esame*/
-select AVG(vote)
-from exam_student es;
+
+select es.exam_id, AVG(vote)
+from exam_student es
+group by es.exam_id;
 
 
 
 /*Contare quanti corsi di laurea ci sono per ogni dipartimento*/
 
-select name,count(*) 
-from departments d 
-group by name;
+select d.department_id, count(*)
+from degrees d 
+group by d.department_id;
 
 _________________________JOIN___________________________________
 
