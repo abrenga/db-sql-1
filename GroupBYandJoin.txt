@@ -98,14 +98,14 @@ join teachers t on t.id =ct.teacher_id;
 /*Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)*/
 
 
-select * 
+select d2.name, t.surname, count(t.id)
 from teachers t 
 inner join course_teacher ct on ct.teacher_id =t.id 
 inner join courses c on c.id= ct.course_id 
 inner join degrees d on d.id =c.degree_id 
 inner join departments d2 on d2.id =d.department_id 
 where d2.name like '%Dipartimento di Matematica%'
-group by t.name, t.surname;
+group by d2.name, t.surname;
 
 
 
